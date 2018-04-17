@@ -20,31 +20,25 @@ import {LayoutModule} from "./common/layout/layout.module";
         AppComponent,
         HomeComponent,
         ContactComponent,
-        NotFoundComponent,
-        HttpClientModule,
-        ApolloModule,
-        HttpLinkModule
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         LayoutModule,
+        HttpClientModule,
+        ApolloModule,
+        HttpLinkModule,
         ROUTING
     ],
     exports: [
+        HttpClientModule,
+        ApolloModule,
+        HttpLinkModule,
         LayoutModule
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(
-        apollo: Apollo,
-        httpLink: HttpLink
-    ) {
-        apollo.create({
-            link: httpLink.create({uri: 'http://app.e8rum.local/cms/graphql'}),
-            cache: new InMemoryCache()
-        });
-    }
 }
